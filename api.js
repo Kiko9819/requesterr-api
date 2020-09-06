@@ -94,6 +94,8 @@ app.post('/token/reject', (req, res, next) => {
     res.send(204);
 });
 
+// Test automated build
+
 app.listen(port, () => {
     console.log('listening on port', port)
 });
