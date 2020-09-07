@@ -3,9 +3,6 @@ on:
   push:
     branches: 
       - master
-      - develop
-      - feature/*
-      - bugfix/*
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,5 +13,5 @@ jobs:
       - name: Run Makefile
         env:
           DOCKER_USER: kris9819
-          DOCKER_PASSWORD: super_secret_password
-        run: make all
+          DOCKER_PASS: super_secret_password
+        run: make build
