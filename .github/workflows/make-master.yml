@@ -1,18 +1,22 @@
-name: make-master
+name: Push master image
 on: 
   push:
     branches: 
       - master
 jobs:
   build:
+    name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout the repo
+        uses: actions/checkout@master
         with:
           fetch-depth: 1
-      - name: Run Makefile
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
-          DOCKER_USER: kris9819
-          DOCKER_PASS: super_secret_password
-        run: make all
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          repository: kris9819/requesterr-api
+          tag_with_ref: true
+          
