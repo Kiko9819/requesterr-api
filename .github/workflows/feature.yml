@@ -18,9 +18,6 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           repository: kris9819/requesterr-api
         run: |
-          REPO = kris9819/requesterr-api
-          TAG = $$(git log -1 --pretty=%!h(MISSING))
-          IMG = $REPO:$TAG
           docker login -u jobs.build.steps.env.DOCKER_USERNAME -p jobs.build.steps.env.DOCKER_PASSWORD
-          docker build -t $IMG .
-          docker push $REPO
+          docker build -t kris9819/requesterr-api:$$(git log -1 --pretty=%!h(MISSING)) .
+          docker push kris9819/requesterr-api
