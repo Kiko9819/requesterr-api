@@ -6,6 +6,3 @@ LATEST := ${NAME}:latest
 build:
 	@docker build -t ${IMG} .
 	@docker tag ${IMG} ${latest}
-
-push:
-	@docker push ${NAME}
