@@ -18,6 +18,6 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           repository: kris9819/requesterr-api
         run: |
-          docker login -u jobs.build.steps.env.DOCKER_USERNAME --password-stdin
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t kris9819/requesterr-api:$$(git log -1 --pretty=%!h(MISSING)) .
           docker push kris9819/requesterr-api
