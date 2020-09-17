@@ -1,0 +1,26 @@
+name: Image From Feature Branch
+on: 
+  push:
+    branches: 
+      - '*/*'
+jobs:
+  build:
+    name: Push Docker Image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Build and Push
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          repository: kris9819/requesterr-api
+        run: |
+          REPO = kris9819/requesterr-api
+          TAG = $$(git log -1 --pretty=%!h(MISSING))
+          IMG = $REPO:$TAG
+          docker login -u jobs.build.steps.env.DOCKER_USERNAME -p jobs.build.steps.env.DOCKER_PASSWORD
+          docker build -t $IMG .
+          docker push $REPO
