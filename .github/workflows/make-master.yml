@@ -18,6 +18,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           username: ${{ secrets.DOCKER_USERNAME }}
           repository: kris9819/requesterr-api
-          tags: latest
           tag_with_ref: true
           
