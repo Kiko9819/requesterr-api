@@ -12,16 +12,13 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 1
-      - name: Setup Git-Bash
-        uses: pkg-src/github-action-git-bash@v1.1
-        # script: |
-        #   git log -1 --pretty=%!h
       - name: Build and Push
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           repository: kris9819/requesterr-api
         run: |
+          git log -1 --pretty=%!h
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          # docker build -t ${{ env.repository }}:${{ git log -1 --pretty=%!h(MISSING)}} .
+          # docker build -t ${{ env.repository }}:${{ }} .
           # docker push kris9819/requesterr-api
