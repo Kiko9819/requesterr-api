@@ -14,8 +14,8 @@ jobs:
           fetch-depth: 1
       - name: Setup Git-Bash
         uses: pkg-src/github-action-git-bash@v1.1
-        script: |
-          git log -1 --pretty=%!h
+        # script: |
+        #   git log -1 --pretty=%!h
       - name: Build and Push
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
