@@ -19,5 +19,5 @@ jobs:
           repository: kris9819/requesterr-api
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t ${{ env.repository }}:{{ git log -1 --pretty=%!h(MISSING)}} .
+          docker build -t ${{ env.repository }}:{{ git log -1 --pretty=%!h}} .
           docker push kris9819/requesterr-api
