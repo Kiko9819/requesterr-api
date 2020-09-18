@@ -12,6 +12,10 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 1
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
       - name: Build and Push
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -20,3 +24,4 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           /usr/bin/git log -1
+          git rev-parse ${{ steps.extract_branch.outputs.branch }}
