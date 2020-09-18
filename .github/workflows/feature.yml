@@ -23,6 +23,6 @@ jobs:
           repository: kris9819/requesterr-api
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          /usr/bin/git log -1
-          echo ${GITHUB_REF#refs/heads/}
-          git rev-parse ${{ steps.extract_branch.outputs.branch }}
+          branch=${GITHUB_REF#refs/heads/}
+          tag=$(git rev-parse ${{ steps.extract_branch.outputs.branch }})
+          
