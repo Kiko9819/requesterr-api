@@ -26,5 +26,5 @@ jobs:
           branch=${GITHUB_REF#refs/heads/}
           tag=$(git rev-parse ${{ steps.extract_branch.outputs.branch }})
           echo "Tagging $branch with tag $tag"
-          docker build -t ${{ env.repository }}-$branch:$tag .
+          docker build -t ${{ env.repository }}:$branch-$tag .
           docker push ${{ env.repository }}
