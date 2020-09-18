@@ -25,4 +25,4 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           branch=${GITHUB_REF#refs/heads/}
           tag=$(git rev-parse ${{ steps.extract_branch.outputs.branch }})
-          
+          echo "Tagging $branch with tag $tag"
