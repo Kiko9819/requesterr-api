@@ -18,7 +18,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           repository: kris9819/requesterr-api
         run: |
-          git log -1 --pretty=%!h
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          # docker build -t ${{ env.repository }}:${{ }} .
-          # docker push kris9819/requesterr-api
+          git log -1 --pretty=%!h
+          docker build -t ${{ env.repository }}:asdf .
+          docker push kris9819/requesterr-api
