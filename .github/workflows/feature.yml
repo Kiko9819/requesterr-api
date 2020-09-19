@@ -1,0 +1,31 @@
+name: Image From Feature Branch
+on: 
+  push:
+    branches: 
+      - '*/*'
+jobs:
+  build:
+    name: Push Docker Image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - name: Build and Push
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          repository: kris9819/requesterr-api
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          branch=${GITHUB_REF#refs/heads/}
+          tag=$(git rev-parse ${{ steps.extract_branch.outputs.branch }})
+          echo "Tagging $branch with tag $tag"
+          image=$branch-$tag
+          docker build -t ${{ env.repository }}:$(echo $image | sed -e 's/\//-/g' | tr '[:upper:]' '[:lower:]') .
+          docker push ${{ env.repository }}
