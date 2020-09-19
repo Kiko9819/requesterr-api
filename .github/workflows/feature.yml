@@ -27,5 +27,5 @@ jobs:
           tag=$(git rev-parse ${{ steps.extract_branch.outputs.branch }})
           echo "Tagging $branch with tag $tag"
           image=${{ env.repository }}:$branch-$tag
-          docker build -t $( $image | sed -e 's/\//-/g' | tr '[:upper:]' '[:lower:]') .
+          docker build -t $(echo $image | sed -e 's/\//-/g' | tr '[:upper:]' '[:lower:]') .
           docker push ${{ env.repository }}
