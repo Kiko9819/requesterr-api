@@ -1,18 +1,19 @@
-name: Push master image
+name: Build master and develop branches
 on: 
   push:
     branches: 
       - master
+      - develop
 jobs:
   build:
-    name: Push Docker image to Docker Hub
+    name: Push Docker Image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo
         uses: actions/checkout@master
         with:
           fetch-depth: 1
-      - name: Push to Docker Hub
+      - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
           password: ${{ secrets.DOCKER_PASSWORD }}
