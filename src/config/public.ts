@@ -30,5 +30,11 @@ export default {
      */
     api: {
         prefix: '/api',
+    },
+    /**
+     * This will be used by the Winston logger
+     */
+    logs: {
+        level: process.env.LOG_LEVEL || 'silly'
     }
 };
