@@ -14,12 +14,32 @@ export default {
     /**
      * Your favorite port
      */
-    port: parseInt(process.env.PORT, 10),
+    serverPort: parseInt(process.env.PORT, 10),
 
     /**
-     * Connection string
+     * Database host
      */
-    databaseURL: process.env.MYSQL_DB,
+    databaseHost: process.env.MYSQL_HOST,
+
+    /**
+     * Database name
+     */
+    databaseName: process.env.MYSQL_DATABASE,
+
+    /**
+     * Root user
+     */
+    databaseRootUser: process.env.MYSQL_ROOT_USER,
+
+    /**
+     * Root password
+     */
+    databaseRootPassword: process.env.MYSQL_ROOT_PASSWORD,
+
+     /**
+     * Database port number
+     */
+    databasePort: process.env.MYSQL_DATABASE_PORT,
 
     /**
      * Your secret sauce
