@@ -29,10 +29,12 @@
     "moment-timezone": "^0.5.23",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
+    "mysql2": "^2.2.5",
     "reflect-metadata": "^0.1.12",
+    "sequelize": "^6.3.5",
+    "ts-node": "^7.0.1",
     "typedi": "^0.8.0",
-    "winston": "^3.2.1",
-    "ts-node": "^7.0.1"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/agenda": "^2.0.4",
@@ -49,6 +51,7 @@
     "jest": "^24.1.0",
     "nodemon": "^2.0.4",
     "prettier": "^1.17.0",
+    "sequelize-cli": "^6.2.0",
     "ts-jest": "^24.0.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
