@@ -9,7 +9,8 @@ export default async(): Promise<Sequelize> => {
         password: config.databaseRootPassword,
         host: config.databaseHost,
         dialect: "mysql",
-        port: +config.databasePort
+        port: +config.databasePort,
+        logging: msg => Logger.debug(msg)
     });
 
     try {
