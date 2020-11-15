@@ -1,3 +1,4 @@
+import dependencyInjector from './dependencyInjector';
 import expressLoader from './express';
 import mysqlLoader from './mysql';
 import Logger from './logger';
@@ -8,12 +9,17 @@ export default async({expressApp}) => {
 
     const models = await Models(sqlize);
 
-    models.UserModel.create({
-        name: "Ivan",
-        email: "ivan@gmail.com",
-        password: "secret"
+    const di = await dependencyInjector({
+        mysqlConnection: sqlize,
+        sequelizeModels: [
+            {
+                name: 'UserModel',
+                model: models.UserModel
+            }
+        ]
     });
-    
+    Logger.info('Dependency Injector loaded');
+
     await expressLoader({ app: expressApp });
     Logger.info('Express loaded')
 }
