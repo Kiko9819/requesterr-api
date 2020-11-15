@@ -1,9 +1,8 @@
-// all business logic will go through this file and other files like this one
-import * as events from 'events';
 import jwt from 'jsonwebtoken';
 import { Container, Inject, Service } from 'typedi';
 import { EventDispatcher, EventDispatcherInterface } from '../decorators/eventDispatcher';
-import { IUser, IUserInputDTO } from '../interfaces/IUser';
+import { IUserCreateResponseDTO, IUserInputDTO } from '../interfaces/IUser';
+import config from '../config/public';
 
 @Service()
 export default class AuthService {
@@ -15,7 +14,7 @@ export default class AuthService {
     constructor() {
     }
 
-    public async SignUp(userDTO: IUserInputDTO): Promise<{ user: IUser, token: string }> {
+    public async SignUp(userDTO: IUserInputDTO): Promise<IUserCreateResponseDTO> {
         try {
             const UserModel: Models.UserModel = Container.get('UserModel');
 
@@ -54,6 +53,6 @@ export default class AuthService {
                 name: user.name,
                 exp: expirationDate.getTime() / 1000
             },
-            'super-secret');
+            config.jwtSecret);
     }
 }
