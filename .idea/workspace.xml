@@ -31,11 +31,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a29282a8-7698-48e9-acba-b9887a9eb1f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/database/models/role.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/models/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loaders/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loaders/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loaders/public.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loaders/public.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605474430951</updated>
-      <workItem from="1605474433087" duration="15292000" />
+      <workItem from="1605474433087" duration="15818000" />
     </task>
     <task id="LOCAL-00001" summary="Fix typo">
       <created>1605480495341</created>
@@ -181,7 +178,35 @@
       <option name="project" value="LOCAL" />
       <updated>1605481611083</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add role model">
+      <created>1605564781172</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564781172</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Remove id from user model, it's added later">
+      <created>1605564799110</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564799110</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Define many to many relationship between user and role">
+      <created>1605564823053</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564823053</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Intellij">
+      <created>1605564844537</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564844537</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +236,11 @@
     <MESSAGE value="Intellij stuff" />
     <MESSAGE value="Add model for response" />
     <MESSAGE value="intellij stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="intellij stuff" />
+    <MESSAGE value="Add role model" />
+    <MESSAGE value="Remove id from user model, it's added later" />
+    <MESSAGE value="Define many to many relationship between user and role" />
+    <MESSAGE value="Intellij" />
+    <option name="LAST_COMMIT_MESSAGE" value="Intellij" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605478121893">

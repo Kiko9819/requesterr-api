@@ -15,6 +15,10 @@ export default async({expressApp}) => {
             {
                 name: 'UserModel',
                 model: models.UserModel
+            },
+            {
+                name: 'RoleModel',
+                model: models.RoleModel
             }
         ]
     });
