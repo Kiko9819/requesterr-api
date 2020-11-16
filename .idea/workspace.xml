@@ -31,10 +31,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a29282a8-7698-48e9-acba-b9887a9eb1f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/database/models/role.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loaders/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loaders/models.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605474430951</updated>
-      <workItem from="1605474433087" duration="7131000" />
+      <workItem from="1605474433087" duration="15292000" />
     </task>
     <task id="LOCAL-00001" summary="Fix typo">
       <created>1605480495341</created>
@@ -159,7 +160,28 @@
       <option name="project" value="LOCAL" />
       <updated>1605480653506</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add model for response">
+      <created>1605481592259</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605481592259</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add model for response">
+      <created>1605481598136</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605481598136</updated>
+    </task>
+    <task id="LOCAL-00013" summary="intellij stuff">
+      <created>1605481611083</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605481611083</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +209,9 @@
     <MESSAGE value="Implement auth service with signup and jwt" />
     <MESSAGE value="Implement signup endpoint" />
     <MESSAGE value="Intellij stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Intellij stuff" />
+    <MESSAGE value="Add model for response" />
+    <MESSAGE value="intellij stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="intellij stuff" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605478121893">
@@ -202,13 +226,13 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="801" y="271" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605481288577" />
-    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605481319384">
+    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605508397439">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605481319384" />
-    <state x="684" y="291" width="618" height="522" key="find.popup" timestamp="1605481532999">
+    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605508397439" />
+    <state x="684" y="291" width="618" height="522" key="find.popup" timestamp="1605553431347">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="684" y="291" width="618" height="522" key="find.popup/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605481532999" />
+    <state x="684" y="291" width="618" height="522" key="find.popup/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605553431347" />
   </component>
 </project>
