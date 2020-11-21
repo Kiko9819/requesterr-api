@@ -22,7 +22,8 @@ export default class AuthService {
             const userRecord = await this.userModel.create({
                 name: userDTO.name,
                 email: userDTO.email,
-                password: userDTO.password
+                password: userDTO.password,
+                roleId: userDTO.roleId
             });
             const token = this.generateJWT(userRecord);
 
@@ -49,10 +50,10 @@ export default class AuthService {
 
         // TODO: Make super-secret more secure
         return jwt.sign({
-                _id: user.id,
-                name: user.name,
-                exp: expirationDate.getTime() / 1000
-            },
+            _id: user.id,
+            name: user.name,
+            exp: expirationDate.getTime() / 1000
+        },
             config.jwtSecret);
     }
 }
