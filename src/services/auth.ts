@@ -25,7 +25,6 @@ export default class AuthService {
                 password: userDTO.password,
                 roleId: userDTO.roleId
             });
-            const token = this.generateJWT(userRecord);
 
             if (!userRecord) {
                 throw new Error('User cannot be created');
@@ -34,8 +33,7 @@ export default class AuthService {
             // this.eventDispatcher.dispatch(events.user.signUp, { user: userRecord });
 
             return {
-                user: userRecord,
-                token: token
+                user: userRecord
             };
         } catch (e) {
             this.logger.error(e);
