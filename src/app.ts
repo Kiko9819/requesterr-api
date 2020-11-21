@@ -6,11 +6,10 @@ async function startServer() {
 
     await require('./loaders/public').default({expressApp: app});
 
-    app.listen(config.port, () => {
-            // process.exit(1);
+    app.listen(config.serverPort, () => {
         console.log(`
       ################################################
-      🛡️  Server listening on port: ${config.port} 🛡️ 
+      🛡️  Server listening on port: ${config.serverPort} 🛡️ 
       ################################################
     `);
     });

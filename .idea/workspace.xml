@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a29282a8-7698-48e9-acba-b9887a9eb1f3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loaders/public.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loaders/public.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kLKSSxwLdvHBAJ9iRUfTrRHMTH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a29282a8-7698-48e9-acba-b9887a9eb1f3" name="Default Changelist" comment="" />
+      <created>1605474430951</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605474430951</updated>
+      <workItem from="1605474433087" duration="15818000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fix typo">
+      <created>1605480495341</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480495341</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add dependencyInjector implementation">
+      <created>1605480513307</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480513307</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Cosmetic changes">
+      <created>1605480527856</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480527856</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fix old mongoose stuff">
+      <created>1605480547557</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480547557</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Move body parser config to top">
+      <created>1605480563309</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480563309</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add event dispatcher">
+      <created>1605480572457</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480572457</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add DI ts">
+      <created>1605480590534</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480590534</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Implement auth service with signup and jwt">
+      <created>1605480615085</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480615085</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Implement signup endpoint">
+      <created>1605480641972</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480641972</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Intellij stuff">
+      <created>1605480653506</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605480653506</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add model for response">
+      <created>1605481592259</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605481592259</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add model for response">
+      <created>1605481598136</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605481598136</updated>
+    </task>
+    <task id="LOCAL-00013" summary="intellij stuff">
+      <created>1605481611083</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605481611083</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add role model">
+      <created>1605564781172</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564781172</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Remove id from user model, it's added later">
+      <created>1605564799110</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564799110</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Define many to many relationship between user and role">
+      <created>1605564823053</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564823053</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Intellij">
+      <created>1605564844537</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605564844537</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix typo" />
+    <MESSAGE value="Add dependencyInjector implementation" />
+    <MESSAGE value="Cosmetic changes" />
+    <MESSAGE value="Fix old mongoose stuff" />
+    <MESSAGE value="Move body parser config to top" />
+    <MESSAGE value="Add event dispatcher" />
+    <MESSAGE value="Add DI ts" />
+    <MESSAGE value="Implement auth service with signup and jwt" />
+    <MESSAGE value="Implement signup endpoint" />
+    <MESSAGE value="Intellij stuff" />
+    <MESSAGE value="Add model for response" />
+    <MESSAGE value="intellij stuff" />
+    <MESSAGE value="Add role model" />
+    <MESSAGE value="Remove id from user model, it's added later" />
+    <MESSAGE value="Define many to many relationship between user and role" />
+    <MESSAGE value="Intellij" />
+    <option name="LAST_COMMIT_MESSAGE" value="Intellij" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605478121893">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605478121892" />
+    <state x="657" y="354" width="662" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605481197757">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="657" y="354" width="662" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605481197757" />
+    <state x="801" y="271" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1605481288577">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="801" y="271" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605481288577" />
+    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605508397439">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605508397439" />
+    <state x="684" y="291" width="618" height="522" key="find.popup" timestamp="1605553431347">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="684" y="291" width="618" height="522" key="find.popup/67.27.1853.1053/1920.0.1200.1920@67.27.1853.1053" timestamp="1605553431347" />
+  </component>
+</project>
