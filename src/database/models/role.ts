@@ -5,15 +5,17 @@ export default async (sequelize: Sequelize) => {
         'Role',
         {
             name: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: false
             },
             description: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: false
             },
-        }
+        },
     );
 
-    await Role.sync({force: true});
+    await Role.sync({ force: true });
 
     return Role;
 }
