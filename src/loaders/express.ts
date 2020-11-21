@@ -5,6 +5,10 @@ import routes from '../api/public';
 import config from '../config/public';
 
 export default ({app}: { app: express.Application }) => {
+    // Middleware that transforms the raw string of req.body into json
+    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(bodyParser.json());
+
     // Load API routes
     app.use(config.api.prefix, routes());
     /**
@@ -31,9 +35,6 @@ export default ({app}: { app: express.Application }) => {
     // Maybe not needed anymore ?
     app.use(require('method-override')());
 
-    // Middleware that transforms the raw string of req.body into json
-    app.use(bodyParser.json());
-    
 
     /// catch 404 and forward to error handler
     app.use((req, res, next) => {

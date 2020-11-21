@@ -1,0 +1,54 @@
+import { model } from 'mongoose';
+import { DataTypes, Sequelize } from "sequelize";
+import bcrypt from 'bcrypt';
+
+export default async (sequelize: Sequelize) => {
+    const Model = sequelize.define(
+        'User',
+        {
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            email: {
+                type: DataTypes.STRING,
+                unique: true,
+                allowNull: false,
+                validate: {
+                    isEmail: true
+                }
+            },
+            password: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                set(value) {
+                    const hash = bcrypt.hashSync(value, bcrypt.genSaltSync(10));
+                    this.setDataValue('password', hash);
+                }
+            }
+        },
+        {
+            hooks: {
+                beforeCreate: (user: any, payload) => {
+                    if (!user.roleId) {
+                        user.roleId = 2;
+                    }
+                },
+                afterCreate: (user: any, payload) => {
+                    sequelize.models.UserRoles.create({
+                        userId: user.id,
+                        roleId: user.roleId
+                    })
+                }
+            }
+        }
+    );
+
+    Model.prototype.validatePassword = function (password) {
+        return bcrypt.compareSync(password, this.password);
+    };
+
+    await Model.sync({ force: true });
+
+    return Model;
+}
