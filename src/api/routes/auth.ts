@@ -15,9 +15,9 @@ export default (app: Router) => {
 
         try {
             const authService = Container.get(AuthService);
-            const {user, token} = await authService.SignUp(req.body as IUserInputDTO);
+            const { user } = await authService.SignUp(req.body as IUserInputDTO);
 
-            return res.status(201).json({user, token});
+            return res.status(201).json({ user });
         } catch (e) {
             logger.error('🔥 error: %o', e);
             return next(e);
@@ -25,7 +25,7 @@ export default (app: Router) => {
     });
 
     route.post('/signin', (req: Request, res: Response, next: NextFunction) => {
-        return res.status(200).json({user: 'user DTO', token: 'probably token'});
+        return res.status(200).json({ user: 'user DTO', token: 'probably token' });
     });
 
     route.post('/logout', (req: Request, res: Response, next: NextFunction) => {
