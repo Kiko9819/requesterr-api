@@ -11,6 +11,7 @@ export interface IUserInputDTO {
     name: string;
     email: string;
     password: string;
+    roleId?: number; // TODO make array of ids(for each role)
 }
 
 export interface IUserCreateResponseDTO {
