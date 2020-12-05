@@ -14,9 +14,22 @@ export default class AuthService {
     constructor() {
     }
 
-    public async SignUp(userDTO: IUserInputDTO): Promise<IUserCreateResponseDTO> {
+    public async SignUp(userDTO: IUserInputDTO): Promise<IUserCreateResponseDTO & {status?: number}> {
         try {
             const UserModel: Models.UserModel = Container.get('UserModel');
+
+            const emailExists = await this.userModel.findOne({
+                where: {
+                    email: userDTO.email,
+                }
+            });
+
+            if(emailExists) {
+                return {
+                    user: null,
+                    status: 409
+                }
+            }
 
             // TODO: Add roles in the whole picture
             const userRecord = await this.userModel.create({
@@ -33,7 +46,8 @@ export default class AuthService {
             // this.eventDispatcher.dispatch(events.user.signUp, { user: userRecord });
 
             return {
-                user: userRecord
+                user: userRecord,
+                status: 201
             };
         } catch (e) {
             this.logger.error(e);
@@ -48,7 +62,7 @@ export default class AuthService {
 
         // TODO: Make super-secret more secure
         return jwt.sign({
-            _id: user.id,
+            id: user.id,
             name: user.name,
             exp: expirationDate.getTime() / 1000
         },
