@@ -44,6 +44,14 @@ export default async (sequelize: Sequelize) => {
         }
     );
 
+    Model.prototype.toJSON = function() {
+        var values = Object.assign({}, this.get());
+
+        delete values.password;
+
+        return values;
+    }
+
     Model.prototype.validatePassword = function (password) {
         return bcrypt.compareSync(password, this.password);
     };
