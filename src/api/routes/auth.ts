@@ -15,9 +15,13 @@ export default (app: Router) => {
 
         try {
             const authService = Container.get(AuthService);
-            const { user } = await authService.SignUp(req.body as IUserInputDTO);
+            const { user, status } = await authService.SignUp(req.body as IUserInputDTO);
 
-            return res.status(201).json({ user });
+            if(!user) {
+                return res.status(status).json({status: status, message: 'Email already exists'});
+            }
+
+            return res.status(status).json({ user });
         } catch (e) {
             logger.error('🔥 error: %o', e);
             return next(e);
