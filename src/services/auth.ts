@@ -1,8 +1,10 @@
+import { IUserLoginDTO } from './../interfaces/IUser';
 import jwt from 'jsonwebtoken';
 import { Container, Inject, Service } from 'typedi';
 import { EventDispatcher, EventDispatcherInterface } from '../decorators/eventDispatcher';
 import { IUserCreateResponseDTO, IUserInputDTO } from '../interfaces/IUser';
 import config from '../config/public';
+import bcrypt from 'bcrypt';
 
 @Service()
 export default class AuthService {
@@ -14,7 +16,7 @@ export default class AuthService {
     constructor() {
     }
 
-    public async SignUp(userDTO: IUserInputDTO): Promise<IUserCreateResponseDTO & {status?: number}> {
+    public async SignUp(userDTO: IUserInputDTO): Promise<IUserCreateResponseDTO & { status?: number }> {
         try {
             const UserModel: Models.UserModel = Container.get('UserModel');
 
@@ -24,7 +26,7 @@ export default class AuthService {
                 }
             });
 
-            if(emailExists) {
+            if (emailExists) {
                 return {
                     user: null,
                     status: 409
@@ -49,6 +51,50 @@ export default class AuthService {
                 user: userRecord,
                 status: 201
             };
+        } catch (e) {
+            this.logger.error(e);
+            throw e;
+        }
+    }
+
+    // TODO: figure out the promise generic
+    public async SignIn(userLoginDTO: IUserLoginDTO): Promise<any> {
+        try {
+            const userRecord = await this.userModel.findOne({
+                where: {
+                    email: userLoginDTO.email
+                }
+            });
+
+            if (!userRecord) {
+                return {
+                    user: userRecord,
+                    token: null,
+                    status: 404
+                }
+            }
+
+            const validPassword = bcrypt.compareSync(userLoginDTO.password, userRecord.password);
+            // const validPassword = await this.userModel.validatePassword(userLoginDTO.password);
+
+            if (validPassword) {
+                const token = this.generateJWT(userRecord);
+
+                // const user = userRecord.toObject();
+                // Reflect.deleteProperty(user, 'password');
+
+                return {
+                    status: 200,
+                    user: userRecord,
+                    token
+                };
+            }
+
+            return {
+                status: 400,
+                token: null,
+                user: null
+            }
         } catch (e) {
             this.logger.error(e);
             throw e;
