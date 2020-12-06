@@ -1,4 +1,3 @@
-import { model } from 'mongoose';
 import { DataTypes, Sequelize } from "sequelize";
 import bcrypt from 'bcrypt';
 
@@ -44,17 +43,13 @@ export default async (sequelize: Sequelize) => {
         }
     );
 
-    Model.prototype.toJSON = function() {
+    Model.prototype.toJSON = function () {
         var values = Object.assign({}, this.get());
 
         delete values.password;
 
         return values;
     }
-
-    Model.prototype.validatePassword = function (password) {
-        return bcrypt.compareSync(password, this.password);
-    };
 
     await Model.sync({ force: true });
 
