@@ -1,10 +1,10 @@
-import { IUserLoginDTO } from './../interfaces/IUser';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Container, Inject, Service } from 'typedi';
+import config from '../config/public';
 import { EventDispatcher, EventDispatcherInterface } from '../decorators/eventDispatcher';
 import { IUserCreateResponseDTO, IUserInputDTO } from '../interfaces/IUser';
-import config from '../config/public';
-import bcrypt from 'bcrypt';
+import { IUserLoginDTO } from './../interfaces/IUser';
 
 @Service()
 export default class AuthService {
@@ -30,10 +30,9 @@ export default class AuthService {
                 return {
                     user: null,
                     status: 409
-                }
+                };
             }
 
-            // TODO: Add roles in the whole picture
             const userRecord = await this.userModel.create({
                 name: userDTO.name,
                 email: userDTO.email,
@@ -71,17 +70,13 @@ export default class AuthService {
                     user: userRecord,
                     token: null,
                     status: 404
-                }
+                };
             }
 
             const validPassword = bcrypt.compareSync(userLoginDTO.password, userRecord.password);
-            // const validPassword = await this.userModel.validatePassword(userLoginDTO.password);
 
             if (validPassword) {
                 const token = this.generateJWT(userRecord);
-
-                // const user = userRecord.toObject();
-                // Reflect.deleteProperty(user, 'password');
 
                 return {
                     status: 200,
@@ -94,7 +89,7 @@ export default class AuthService {
                 status: 400,
                 token: null,
                 user: null
-            }
+            };
         } catch (e) {
             this.logger.error(e);
             throw e;
@@ -106,12 +101,11 @@ export default class AuthService {
         const expirationDate = new Date(today);
         expirationDate.setDate(today.getDate() + 30);
 
-        // TODO: Make super-secret more secure
         return jwt.sign({
-            id: user.id,
-            name: user.name,
-            exp: expirationDate.getTime() / 1000
-        },
+                id: user.id,
+                name: user.name,
+                exp: expirationDate.getTime() / 1000
+            },
             config.jwtSecret);
     }
 }
