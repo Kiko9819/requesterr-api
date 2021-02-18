@@ -68,7 +68,8 @@ export default class AuthService {
             if (!userRecord) {
                 return {
                     user: userRecord,
-                    token: null,
+                    access_token: null,
+                    refresh_token: null,
                     status: 404
                 };
             }
@@ -76,18 +77,21 @@ export default class AuthService {
             const validPassword = bcrypt.compareSync(userLoginDTO.password, userRecord.password);
 
             if (validPassword) {
-                const token = this.generateJWT(userRecord);
+                const token = this.generateJWT(userRecord, 15);
+                const refreshToken = this.generateRefreshToken(userRecord);
 
                 return {
                     status: 200,
                     user: userRecord,
-                    token
+                    access_token: token,
+                    refresh_token: refreshToken
                 };
             }
 
             return {
                 status: 400,
-                token: null,
+                access_token: null,
+                refresh_token: null,
                 user: null
             };
         } catch (e) {
@@ -96,11 +100,27 @@ export default class AuthService {
         }
     }
 
-    private generateJWT(user) {
+    private generateRefreshToken(user) {
+        // //get all user's refresh tokens from DB
+        // const userRefreshTokens = mockDB.tokens.filter(token => token.userId === payload.id); // check if there are 5 or more refresh tokens,
+        // // which have already been generated. In this case, we should
+        // // remove all this refresh tokens and leave only new one for security reason
+        // if (userRefreshTokens.length >= 5) {
+        //     mockDB.tokens = mockDB.tokens.filter(token => token.userId !== payload.id);
+        // } const refreshToken = jwt.sign({ user: payload }, jwtSecretString, { expiresIn: '30d' }); mockDB.tokens.push({
+        //     id: uuidv1(),
+        //     userId: payload.id,
+        //     refreshToken
+        // }); return refreshToken;
+
+        // temp solution
+        return this.generateJWT(user, 30);
+    }
+
+    private generateJWT(user, expiresIn) {
         const today = new Date();
         const expirationDate = new Date(today);
-        expirationDate.setDate(today.getDate() + 30);
-
+        expirationDate.setTime(today.getTime() + expiresIn * 60000);
         return jwt.sign({
                 id: user.id,
                 name: user.name,
