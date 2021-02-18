@@ -51,7 +51,7 @@ export default async (sequelize: Sequelize) => {
         return values;
     }
 
-    await Model.sync({ force: true });
+    Model.sync();
 
     return Model;
 }
