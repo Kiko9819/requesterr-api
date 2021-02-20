@@ -28,4 +28,4 @@ jobs:
           echo "Tagging $branch with tag $tag"
           image=$branch-$tag
           docker build -t ${{ env.repository }}:$(echo $image | sed -e 's/\//-/g' | tr '[:upper:]' '[:lower:]') .
-          docker push ${{ env.repository }}
+          docker push ${{ env.repository }}:$(echo $image | sed -e 's/\//-/g' | tr '[:upper:]' '[:lower:]')
