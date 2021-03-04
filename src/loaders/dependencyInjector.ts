@@ -4,7 +4,8 @@ import LoggerInstance from './logger';
 // TODO: Fix types
 export default ({mysqlConnection, sequelizeModels}) => {
     try {
-        console.log(sequelizeModels);
+        Container.set('mysqlConnection', mysqlConnection);
+
         sequelizeModels.forEach(model => {
             Container.set(model.name, model.model);
             LoggerInstance.info(`Dependency injector set ${model.name} to `, model.model);
