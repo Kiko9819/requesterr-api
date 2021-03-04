@@ -4,6 +4,7 @@ import { Container } from 'typedi';
 import { Logger } from 'winston';
 import { IUserInputDTO } from '../../interfaces/IUser';
 import AuthService from '../../services/auth';
+import middlewares from '../middleware/public';
 
 const route = Router();
 
@@ -32,7 +33,7 @@ export default (app: Router) => {
     });
 
     // find a solution to tokens that have not yet expired but the user is logged out...
-    route.post("/signout", async (req: Request, res: Response, next: NextFunction) => {
+    route.post("/signout", middlewares.isAuth, async (req: Request, res: Response, next: NextFunction) => {
         const logger: Logger = Container.get('logger');
         logger.debug('Calling Sign-Out endpoint with body: %o', req.body);
 
