@@ -3,7 +3,8 @@ import config from '../../config/public';
 
 const getTokenFromHeader = req => {
     if(req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-        return req.headers.Authorization.split(' ')[1];
+        let data = req.headers.authorization.split(' ')[1];
+        return data;
     }
     return null;
 }
