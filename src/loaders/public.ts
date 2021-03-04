@@ -7,18 +7,18 @@ import Models from './models';
 export default async({expressApp}) => {
     const sqlize = await mysqlLoader();
 
-    const models = await Models(sqlize);
+    const {UserModel, RoleModel} = await Models(sqlize);
 
-    const di = await dependencyInjector({
+    await dependencyInjector({
         mysqlConnection: sqlize,
         sequelizeModels: [
             {
                 name: 'UserModel',
-                model: models.UserModel
+                model: UserModel
             },
             {
                 name: 'RoleModel',
-                model: models.RoleModel
+                model: RoleModel
             }
         ]
     });
