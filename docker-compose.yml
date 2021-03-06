@@ -6,13 +6,10 @@ services:
     restart: always
     environment: 
       MYSQL_DATABASE: 'example_db'
-      MYSQL_USER: 'root'
       MYSQL_PASSWORD: 'example_pass'
       MYSQL_ROOT_PASSWORD: 'example_root_pass'
     ports: 
       - '3306:3306'
-    expose: 
-      - '3306'
     volumes: 
       - example_volume:/var/lib/mysql
 volumes: 

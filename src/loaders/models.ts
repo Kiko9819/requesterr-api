@@ -33,11 +33,17 @@ export default async (sequelize: Sequelize) => {
         });
     }
 
+    const forceSync = async () => {
+        await sequelize.query('SET FOREIGN_KEY_CHECKS=0');
+        await sequelize.sync({force: true});
+        await sequelize.query('SET FOREIGN_KEY_CHECKS=1');
+    }
+
     const UserModel = await User(sequelize);
     const RoleModel = await Role(sequelize);
     await setRelationsShips(UserModel, RoleModel);
-
-    await sequelize.sync({ force: true });
+    await forceSync();
+    
     await seedDb(UserModel, RoleModel);
 
     return {

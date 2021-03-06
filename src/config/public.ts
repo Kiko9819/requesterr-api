@@ -46,6 +46,10 @@ export default {
      */
     jwtSecret: process.env.JWT_SECRET,
     /**
+     * Your secret sauce
+     */
+    jwtAlgorithm: process.env.JWT_ALGO,
+    /**
      * API configs
      */
     api: {

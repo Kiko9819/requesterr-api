@@ -1,3 +1,4 @@
+import { Model } from 'mongoose';
 import { DataTypes, Sequelize } from 'sequelize';
 
 export default async (sequelize: Sequelize) => {
@@ -15,7 +16,7 @@ export default async (sequelize: Sequelize) => {
         },
     );
 
-    await Role.sync({ force: true });
+    Role.sync();
 
     return Role;
 }
