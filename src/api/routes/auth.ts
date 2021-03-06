@@ -50,14 +50,9 @@ export default (app: Router) => {
             const authService = Container.get(AuthService);
             
             if(req.body.refresh_token) {
-                // const asdf = jwt({
-                //     secret: config.jwtSecret,
-                //     algorithms: [config.jwtAlgorithm], // JWT Algorithm
-                //     userProperty: 'refresh_token', // Use req.token to store the JWT
-                //     getToken: req.body.refresh_token, // How to extract the JWT from the request
-                // });
+                const tokens = await authService.RefreshToken(req.body.refresh_token);
 
-                // console.log("ASFFFF" ,asdf);
+                return res.status(200).json({...tokens});
             } else {
                 const { user, access_token, refresh_token, status } = await authService.SignIn(req.body as IUserLoginDTO);
 
