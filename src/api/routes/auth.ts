@@ -5,6 +5,8 @@ import { Logger } from 'winston';
 import { IUserInputDTO } from '../../interfaces/IUser';
 import AuthService from '../../services/auth';
 import middlewares from '../middleware/public';
+import jwt from 'express-jwt';
+import config from '../../config/public';
 
 const route = Router();
 
@@ -40,33 +42,44 @@ export default (app: Router) => {
         return res.status(200).json({message: "Okay, I'm not gonna do anything as of now though..."});
     })
 
-    route.post('/signin', async (req: Request, res: Response, next: NextFunction) => {
+    route.post('/signin', middlewares.checkSecret, async (req: Request, res: Response, next: NextFunction) => {
         const logger: Logger = Container.get('logger');
         logger.debug('Calling Sign-In endpoint with body: %o', req.body);
 
         try {
             const authService = Container.get(AuthService);
-            const { user, access_token, refresh_token, status } = await authService.SignIn(req.body as IUserLoginDTO);
+            
+            if(req.body.refresh_token) {
+                // const asdf = jwt({
+                //     secret: config.jwtSecret,
+                //     algorithms: [config.jwtAlgorithm], // JWT Algorithm
+                //     userProperty: 'refresh_token', // Use req.token to store the JWT
+                //     getToken: req.body.refresh_token, // How to extract the JWT from the request
+                // });
 
-            if (status === 400) {
-                return res.status(status).json({ 
-                    status: status, 
-                    message: "Username or password is incorrect"
-                });
+                // console.log("ASFFFF" ,asdf);
+            } else {
+                const { user, access_token, refresh_token, status } = await authService.SignIn(req.body as IUserLoginDTO);
+
+                if (status === 400) {
+                    return res.status(status).json({ 
+                        status: status, 
+                        message: "Username or password is incorrect"
+                    });
+                }
+    
+                if (status === 200) {
+                    return res.status(status).json({ 
+                        status: status, 
+                        message: "Successfully logged in", 
+                        user: user, 
+                        access_token: access_token,
+                        refresh_token: refresh_token
+                    });
+                }
+    
+                return res.status(status).json({ status: status, message: "User doesn't exist" });
             }
-
-            if (status === 200) {
-                return res.status(status).json({ 
-                    status: status, 
-                    message: "Successfully logged in", 
-                    user: user, 
-                    access_token: access_token,
-                    refresh_token: refresh_token
-                });
-            }
-
-            return res.status(status).json({ status: status, message: "User doesn't exist" });
-
         } catch (e) {
             logger.error('🔥 error: %o', e);
             return next(e);
