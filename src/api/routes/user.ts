@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import { nextTick } from 'process';
 import Container from 'typedi';
 import UsersService from '../../services/users';
 import middlewares from '../middleware/public';
@@ -11,7 +10,6 @@ export default (app: Router) => {
     app.use('/users', route);
 
     route.get('/me', middlewares.isAuth, middlewares.attachCurrentUser, (req: Request, res: Response) => {
-        console.log(req.currentUser);
         return res.json({
             user: req.currentUser
         }).status(200);
