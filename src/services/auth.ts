@@ -18,8 +18,6 @@ export default class AuthService {
 
     public async SignUp(userDTO: IUserInputDTO): Promise<IUserCreateResponseDTO & { status?: number }> {
         try {
-            const UserModel: Models.UserModel = Container.get('UserModel');
-
             const emailExists = await this.userModel.findOne({
                 where: {
                     email: userDTO.email,
@@ -77,13 +75,12 @@ export default class AuthService {
             const validPassword = bcrypt.compareSync(userLoginDTO.password, userRecord.password);
 
             if (validPassword) {
-                const token = this.generateJWT(userRecord, 15);
-                const refreshToken = this.generateRefreshToken(userRecord);
+                const [accessToken, refreshToken] = await Promise.all([this.signAccessToken(userRecord.id), this.signRefreshToken(userRecord.id)])
 
                 return {
                     status: 200,
                     user: userRecord,
-                    access_token: token,
+                    access_token: accessToken,
                     refresh_token: refreshToken
                 };
             }
@@ -100,25 +97,65 @@ export default class AuthService {
         }
     }
 
-    // public async RefreshToken(): Promise<any> {
-    //     return {
-    //         access_token: this.generateJWT(15)
-    //     }
-    // }
-
-    private generateRefreshToken(user) {
-        return this.generateJWT(user, 30);
+    public async RefreshToken(refreshToken: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            try {
+                resolve(this.reIssueTokens(refreshToken));
+            } catch(error) {
+                reject(error);
+            }
+        })
     }
 
-    private generateJWT(user, expiresIn) {
-        const today = new Date();
-        const expirationDate = new Date(today);
-        expirationDate.setTime(today.getTime() + expiresIn * 60000);
-        return jwt.sign({
-                id: user.id,
-                name: user.name,
-                exp: expirationDate.getTime() / 1000
-            },
-            config.jwtSecret);
+    private async reIssueTokens(refreshToken: string): Promise<any> {
+        try {
+            const decoded = jwt.verify(refreshToken, config.jwtSecret);
+            const userId = decoded.aud;
+            const [accessToken, refToken] = await Promise.all([this.signAccessToken(userId), this.signRefreshToken(userId)])
+
+            // reach to the UserToken table when you create it.
+            // userToken =  userToken[0];
+            // if(!userToken)
+            //     throw {isError: true, message: 'User token does not exist'};
+            // if(userToken.refreshToken !== refreshToken)
+            //     throw {isError: true, message: 'Old token. Not valid anymore.'}
+
+
+            return {
+                access_token: accessToken,
+                refresh_token: refToken
+            };
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    private async signAccessToken(userId: number): Promise<any> {
+        return this.signToken(userId, config.jwtSecret, '900000');
+    }
+
+    private async signRefreshToken(userId: number): Promise<any> {
+        return this.signToken(userId, config.jwtSecret, '60d');
+    }
+
+    private async signToken(userId: number, secretKey: string, expiresIn: string): Promise<any> {
+        const userRecord = await this.userModel.findByPk(userId);
+
+        return new Promise((resolve, reject) => {
+
+            const options = {
+                expiresIn: expiresIn,
+                issuer: userRecord.name,
+                audience: userId.toString()
+            };
+
+            jwt.sign({}, secretKey, options, (err, token) => {
+                if (err) {
+                    return reject(err);
+                } else {
+                    return resolve(token);
+                }
+            })
+        })
     }
 }
