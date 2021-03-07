@@ -1,4 +1,3 @@
-import { Model } from 'mongoose';
 import { DataTypes, Sequelize } from 'sequelize';
 
 export default async (sequelize: Sequelize) => {
